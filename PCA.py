@@ -1,11 +1,11 @@
 import pandas as pd, numpy as np, matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler, Imputer
 
-df = pd.read_csv("C:/Users/titou/Desktop/Centrale/Option OSY/Projet/Datasets/new_df.csv")
-df = df.drop(columns=['Unnamed: 0', 'area_code', 'area'])
-df = df.fillna(0)
-print(list(df))
+# df = pd.read_csv("C:/Users/titou/Desktop/Centrale/Option OSY/Projet/Datasets/WORLDBANK50.csv")
+# df = df.drop(columns=['Unnamed: 0', 'area_code', 'area'])
+# df = df.fillna(0)
+# print(list(df))
 
 
 def transform_pca(df):
@@ -14,8 +14,10 @@ def transform_pca(df):
         It assumes that all parameters are numerical and that there are no missing values
     """
 
+    #Replacing missing values
     values = df.values
-
+    imputer = Imputer()
+    values = imputer.fit_transform(values)
 
     #Rescaling data
     values_ss = StandardScaler().fit(values)
@@ -62,4 +64,4 @@ def transform_pca(df):
 
     return df_PCA
 
-transform_pca(df)
+# transform_pca(df)

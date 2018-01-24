@@ -1,4 +1,4 @@
-import pandas as pd, numpy as np        # Data manipulation 
+import pandas as pd, numpy as np        # Data manipulation
 
 def correlation_matrix(dataset):
 
@@ -78,8 +78,10 @@ def script_correlation(df,code_names,threshold): #df = dataframe, #code_names = 
 
 ### SCRIPT ###
 
+
 df = pd.read_csv("C:/Users/titou/Desktop/Centrale/Option OSY/Projet/Datasets/WORLDBANK_Valid80.csv")
 df = df.drop(columns = ['year'])
+# print(len(df['year']))
 
 code_names = pd.read_csv("C:/Users/titou/Desktop/Centrale/Option OSY/Projet/Correlation analysis/WorldBank_Indicators.csv")
 code_names = code_names[["Code","Indicator Name"]]
